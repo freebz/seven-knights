@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background2" />
+    
+    <ImageView android:id="@+id/img_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/name"
+        android:layout_centerHorizontal="true" />
+    
+    <TextView android:id="@+id/name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerInParent="true"
+         android:layout_marginStart="80dp"
+         android:textSize="24sp"
+         android:textStyle="bold"
+         android:textColor="@android:color/white" />
+    
+    <Button android:id="@+id/btn_new_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:text="@string/new_card" />
+    
+    <Button android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:text="@string/ok" />
+     
+    <com.mocoplex.adlib.AdlibAdViewContainer
+	 	    android:layout_width="fill_parent"
+	 	    android:layout_height="wrap_content"
+	 	    android:id="@+id/ads"
+	 	    android:layout_alignParentBottom="true"
+	 	    isDefaultBanner="true" />
+ 
+</RelativeLayout>
