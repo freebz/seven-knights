@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CardListDatabaseHelper {
 
-	private static final int DATABASE_VERSION = 10;
+	private static final int DATABASE_VERSION = 11;
 	private static final String DATABASE_NAME = "sevenknight.db";
 	
 	private CardOpenHelper openHelper;
@@ -115,8 +115,11 @@ public class CardListDatabaseHelper {
 		
 		@Override
 		public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-			if (oldVersion < 10)
+			if (oldVersion < 10) {
 				createTableCard(database);
+				insertCard(database, HeroList.getInstance().get(22));		// 에반
+				insertCard(database, HeroList.getInstance().get(25));		// 카린
+			}
 			
 			createTableHero(database);
 		}
@@ -157,6 +160,12 @@ public class CardListDatabaseHelper {
 					+ "LEVEL INTEGER, "
 					+ "BONUS_RATIO INTEGER)"
 			);
+		}
+		
+		private void insertCard(SQLiteDatabase database, Hero hero) {
+			ContentValues values = new ContentValues();
+			values.put("HERO_ID", hero.getId());
+			database.insert("CARD", null, values);
 		}
 	}
 }

@@ -10,14 +10,31 @@ public class Hero {
 	private int nextId;
 	private int seq;
 	
+	private int[] normalRatio = {25000, 10000, 2500, 1000, 500, 250};
+	private int[] advancedRatio = {5000, 2500, 1000, 500, 250, 100};
+	private int[] sevenKnightRatio = {2500, 1000, 500, 250, 100, 10};
+	
 	public Hero(int id, String name, int group, int star, int ratio, int nextId, int seq) {
 		this.id= id;
 		this.name = name;
 		this.group = group;
 		this.star = star;
-		this.ratio = ratio;
+//		this.ratio = ratio;
 		this.nextId = nextId;
 		this.seq = seq;
+		
+		switch (group) {
+		case 1:		// 세븐나이츠
+		case 11:	// 특수영웅
+			this.ratio = sevenKnightRatio[star - 1];
+			break;
+		case 2:		// 모험가들
+			this.ratio = advancedRatio[star - 1];
+			break;
+		default:
+			this.ratio = normalRatio[star - 1];
+			break;
+		}
 	}
 
 	public int getId() {
